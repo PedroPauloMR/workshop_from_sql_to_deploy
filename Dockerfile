@@ -1,0 +1,16 @@
+FROM postgres:latest
+
+ARG POSTGRES_PASSWORD
+ARG POSTGRES_USER 
+ARG POSTGRES_DB
+ARG DB_PORT
+# my env vars
+ENV POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+ENV POSTGRES_USER=${POSTGRES_USER} 
+ENV POSTGRES_DB=${POSTGRES_DB}
+
+# default postgres port connection
+EXPOSE ${DB_PORT}
+
+# default command to start
+CMD ["postgres"]
