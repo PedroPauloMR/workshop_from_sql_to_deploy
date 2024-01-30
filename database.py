@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker,declarative_base
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(dotenv_path='.env')
 
 db_user = os.getenv('POSTGRES_USER')
 db_password = os.getenv('POSTGRES_PASSWORD')
@@ -13,6 +13,7 @@ db_host = os.getenv('DB_HOST')
 db_port = os.getenv('DB_PORT')
 
 DATABASE_URL = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
+print(DATABASE_URL)
 engine = create_engine(DATABASE_URL)
 
 SessionLocal = sessionmaker(bind = engine)
@@ -26,3 +27,5 @@ class Produto(Base):
     titulo = Column(String, nullable=True)
     descricao = Column(String)
     preco = Column(Float, nullable=False)
+
+Base.metadata.create_all(bind = engine)
