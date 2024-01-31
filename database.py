@@ -21,7 +21,7 @@ SessionLocal = sessionmaker(bind = engine)
 Base = declarative_base()
 
 class Produto(Base):
-    __tablename__ = 'produtos'
+    __tablename__ = 'bronze_produtos' #produtos
 
     id = Column(Integer, primary_key=True, index = True)
     titulo = Column(String, nullable=True)
